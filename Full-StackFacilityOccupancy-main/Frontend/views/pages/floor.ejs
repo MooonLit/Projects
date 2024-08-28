@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Floor Management</title>
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <div class="container">
+        <h1 class="text-center">Floor Management</h1>
+
+        <!-- View Rooms -->
+        <div>
+            <h2>View Floors</h2>
+            <button onclick="toggleTable()" class="btn btn-primary">Toggle View</button>
+            <table class="table table-striped" id="floorTable">
+                <thead>
+                    <tr>
+                        <th>Floor ID</th>
+                        <th>Floor Level</th>
+                        <th>Floor Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% floors.forEach(function(floor) { %>
+                        <tr>
+                            <td><%= floor.id %></td>
+                            <td><%= floor.level %></td>
+                            <td><%= floor.name %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add Room Form -->
+        <div>
+            <h2>Add Floor</h2>
+            <form action="/add-floor" method="post">
+                <input type="text" name="level" placeholder="Floor Level" required>
+                <input type="text" name="name" placeholder="Floor Name" required>
+                <button type="submit" class="btn btn-success">Add Floor</button>
+            </form>
+        </div>
+
+        <!-- Delete Room Form -->
+        <div>
+            <h2>Delete Floor</h2>
+            <form action="/delete-floor" method="post">
+                <input type="number" name="id" placeholder="Floor ID" required>
+                <button type="submit" class="btn btn-danger">Delete Room</button>
+            </form>
+        </div>
+
+        <!-- Update Room Form -->
+        <div>
+            <h2>Update Floor</h2>
+            <form action="/update-Floor" method="post">
+                <input type="number" name="id" placeholder="Floor ID" required>
+                <input type="text" name="level" placeholder="New Level">
+                <input type="text" name="name" placeholder="New Name">
+                <button type="submit" class="btn btn-warning">Update Room</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleTable() {
+            var table = document.getElementById("floorTable");
+            table.style.display = table.style.display === "none" ? "table" : "none";
+        }
+    </script>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!-- index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Senior Citizen Facility</title>
+    
+        <!-- Bootstrap CSS from CDN for basic styling -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+        <!-- Custom Styles -->
+        <style>
+            body { 
+                padding-top: 50px;
+                background-color: #f2f2f2; /* Light grey background */
+                font-family: 'Roboto', sans-serif; /* Stylish, readable font */
+            }
+    
+            h1 {
+                color: #333; /* Dark grey color for headings */
+                text-align: center; /* Center-align headings */
+            }
+    
+            .container {
+                background-color: white;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* subtle shadow for container */
+                padding: 20px;
+                margin-top: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Welcome to Senior Citizen Facility</h1>
+            <!-- Additional content goes here -->
+        </div>
+    </body>
+    </html>
+    
+</head>
+
+<body class="container">
+
+    <header>
+    </header>
+
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading">User Login</h1>
+        <form action="/login_page" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </main>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+
+</html>

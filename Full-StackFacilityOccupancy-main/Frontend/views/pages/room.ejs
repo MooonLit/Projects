@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Room Management</title>
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <%- include('../partials/header'); %>
+    </header>
+
+    <div class="container">
+        <h1 class="text-center">Room Management</h1>
+
+        <!-- View Rooms -->
+        <div>
+            <h2>View Rooms</h2>
+            <button onclick="toggleTable()" class="btn btn-primary">Toggle View</button>
+            <table class="table table-striped" id="roomTable">
+                <thead>
+                    <tr>
+                        <th>Room ID</th>
+                        <th>Room Capacity</th>
+                        <th>Room Number</th>
+                        <th>Room Floor</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% rooms.forEach(function(room) { %>
+                        <tr>
+                            <td><%= room.id %></td>
+                            <td><%= room.capacity %></td>
+                            <td><%= room.number %></td>
+                            <td><%= room.floor %></td>
+                        </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Add Room Form -->
+        <div>
+            <h2>Add Room</h2>
+            <form action="/add-room" method="post">
+                <input type="text" name="capacity" placeholder="Room Capacity" required>
+                <input type="text" name="number" placeholder="Room Number" required>
+                <input type="text" name="floor" placeholder="Room Floor" required>
+                <button type="submit" class="btn btn-success">Add Room</button>
+            </form>
+        </div>
+
+        <!-- Delete Room Form -->
+        <div>
+            <h2>Delete Room</h2>
+            <form action="/delete-room" method="post">
+                <input type="number" name="id" placeholder="Room ID" required>
+                <button type="submit" class="btn btn-danger">Delete Room</button>
+            </form>
+        </div>
+
+        <!-- Update Room Form -->
+        <div>
+            <h2>Update Room</h2>
+            <form action="/update-room" method="post">
+                <input type="number" name="id" placeholder="Room ID" required>
+                <input type="text" name="capacity" placeholder="New Capacity">
+                <input type="text" name="number" placeholder="New Number">
+                <input type="text" name="floor" placeholder="New Floor">
+                <button type="submit" class="btn btn-warning">Update Room</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function toggleTable() {
+            var table = document.getElementById("roomTable");
+            table.style.display = table.style.display === "none" ? "table" : "none";
+        }
+    </script>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>
